@@ -12,11 +12,13 @@
   
   
 Task 1. 建立一個 Maven Web Project. (M)File > New Project
+
 1. 在 Create Project Wizard 的 Step 1: Choose Project, 選擇: Maven category 下的 Web Application.
 2. 在 Create Project Wizard 的 Step 2: Name and Location, 輸入: Project Name, Project Location, Group Id, Version 等資訊.
 3. 在 Create Project Wizard 的 Step 3: 選擇 GlassFish 及 Java EE 版本. 至 8.2 版為止尚未支援 Java EE 8.
   
 Task 2. 加入 JSF Framework 至專案中.
+
 1. 選擇: 專案 > 選滑鼠右鍵選單 > Properties. 顯示 Project Properties 視窗.
 2. 在 Project Properties 視窗, 選擇 Frameworks category > (T)Libraries, 加入 JSF 2.2. Netbeans 會為專案產生 `web.xml` 並設定需要的內容.
    ![](img/img02.jpg )
