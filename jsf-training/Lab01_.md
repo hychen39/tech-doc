@@ -1,13 +1,6 @@
----
-html:
-    embed_local_images: true
-    embed_svg: true
-    offline: false
-    toc: true
----  
+ 
   
-  
-<link rel="stylesheet" href="article_typesetting\article_01.css">
+<link rel="stylesheet" href="./article_typesetting/article_01.css">
   
 <header>
   Unit 01: Hello JSF <br/>
