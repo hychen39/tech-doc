@@ -1,9 +1,10 @@
+# 自動產生文件的目錄
 
-# 需求
+## 需求
 
-有一 HTML 文件有以下的內容. 需要自動產生目錄(Table of Content)的超連結, 放置於 `div#toc` 上.
+有一 HTML 文件有以下的內容. 需要自動產生目錄\(Table of Content\)的超連結, 放置於 `div#toc` 上.
 
-```html
+```markup
 <body>
     <div id="toc"></div>
     <article>
@@ -17,15 +18,14 @@
 </body>
 ```
 
+## 實作 1 \(by Hendrik in \[1\]\)
 
-# 實作 1 (by Hendrik in [1]) 
-
-```js
+```javascript
 /*
   Parameter:
     container - 含有 h1 ~ h6 標題的容器的 selector, 例如: 'article'.
     output - 要放置輸出結果的容器的 selector, 例如, 'div#toc'.
-  
+
   Example:
     TableOfContents('article', 'div#toc');
 */
@@ -39,7 +39,7 @@ function TableOfContents(container, output) {
     var container = document.querySelector(container) || document.querySelector('#contents');
     // 要放置輸出結果的容器
     var output = output || '#toc';
-    
+
     container.innerHTML =
         container.innerHTML.replace(
             /<h([\d])>([^<]+)<\/h([\d])>/gi,
@@ -68,14 +68,14 @@ function TableOfContents(container, output) {
 
                 // Current Level. Default is 0
                 level = parseInt(openLevel);
-                
+
                 // Make anchor string. Replace all space with underline char.
                 var anchor = titleText.replace(/ /g, "_");
-                
+
                 // Accmulate the content using the local variable
                 toc += '<li><a href="#' + anchor + '">' + titleText +
                     '</a>';
-                
+
                 // Return a reformated header with the anchor.
                 var item = '<h' + openLevel + '><a id="' + anchor + '">' +
                     '</a> ' +  titleText + '</h' + closeLevel + '>';
@@ -89,21 +89,20 @@ function TableOfContents(container, output) {
     // append content to the output element.
     document.querySelector(output).innerHTML += toc;
 };
-
 ```
 
-# 實作 2 (by matthewkastor in [2]) 
+## 實作 2 \(by matthewkastor in \[2\]\)
 
-```js
+```javascript
 function htmlTableOfContents(documentRef) {
     var documentRef = documentRef || document;
     var toc = documentRef.getElementById('toc');
-    
+
     // Convert to array
     // the resultant arrary will contain the header elements in the order of the locations they appear.
     // For example: h1 h2 h2 h1 h2 h2 
     var headings = [].slice.call(documentRef.body.querySelectorAll('h1, h2, h3, h4, h5, h6'));
-    
+
     // Generate a toc link for each header. Also, put an anchor before each header. 
     headings.forEach(function (heading, index) {
        // Generate the anchor 
@@ -122,15 +121,15 @@ function htmlTableOfContents(documentRef) {
         var div = documentRef.createElement('div');
         div.setAttribute('class', heading.tagName.toLowerCase());
         div.appendChild(link);
-        
+
         // append the div to toc element.
         toc.appendChild(div); 
     });
 }
 ```
 
+## 參考資料
 
-# 參考資料
-
-1. [Is there a JavaScript solution to generating a &quot;table of contents&quot; for a page?](https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page#)
+1. [Is there a JavaScript solution to generating a "table of contents" for a page?](https://stackoverflow.com/questions/187619/is-there-a-javascript-solution-to-generating-a-table-of-contents-for-a-page#)
 2. matthewkastor, [matthewkastor/html-table-of-contents](https://github.com/matthewkastor/html-table-of-contents/blob/master/src/html-table-of-contents.js)
+
