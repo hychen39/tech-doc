@@ -113,14 +113,14 @@ $ ssh-copy-id u01@remore_server
                 <target>
                     <!-- put ant commands here -->
                     <!-- Remove the existing content in the target directory -->
-                    <sshexec host="l746"
-                        username="steven"
+                    <sshexec host="server"
+                        username="u01"
                         keyfile="~/.ssh/id_rsa"
                         trust="true"
                         verbose="false"
                         command="rm -rf /var/www/html/api/*"/>
                     <!-- Copy the files in the source directory to the target directory -->
-                    <scp todir="steven@l746:/var/www/html/api/"
+                    <scp todir="u01@server:/var/www/html/api/"
                         keyfile="~/.ssh/id_rsa"
                         trust="true"
                         verbose="false">
